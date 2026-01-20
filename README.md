@@ -8,6 +8,8 @@ Requirements:
     - Python 3.7+
     - No external dependencies
 
+----------------------------------
+
 This script migrates users and their progress events / settings from an old Kavita database
 to a new Kavita database. It handles user accounts, reading progress, bookmarks,
 reading sessions, and other user-related data.
@@ -24,6 +26,8 @@ This is useful when:
 - Consolidating multiple Kavita instances
 - Recovering from database corruption
 - Migrating to a new server with different file paths
+
+Before anyone asks, this is not for migrating to or from other applications. It is meant for a Kavita --> Kavita migration. 
 
 There is some steps to make this script work or run properly: 
 
