@@ -1,4 +1,22 @@
 # Kavita-Database-Migration
+
+## ComicRack_Migration.py
+
+ComicRack to Kavita Migration Script
+
+This script migrates reading progress from ComicRack XML database to Kavita database.
+ComicRack stores its data in XML format, typically in ComicDB.xml file.
+
+The script matches comics by:
+- Series name (normalized)
+- Volume number/year
+- Issue/Chapter number
+
+Usage:
+    python migrate_comicrack.py --comicrack-xml /path/to/ComicDB.xml --kavita-db /path/to/kavita.db --username "YourKavitaUsername" [options]
+
+
+## Kavita_Migrate_Progress.py
 Python script to help migrate from an old database to a fresh new database while still bringing over your read progress and users. 
 
 Usage:
