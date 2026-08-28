@@ -13,7 +13,7 @@ The script matches comics by:
 - Issue/Chapter number
 
 Usage:
-    python migrate_comicrack.py --comicrack-xml /path/to/ComicDB.xml --kavita-db /path/to/kavita.db --username "YourKavitaUsername" [options]
+    python ComicRack_Migration.py --comicrack-xml /path/to/ComicDB.xml --kavita-db /path/to/kavita.db --username "YourKavitaUsername" [options]
 
 
 ## Kavita_Migrate_Progress.py
