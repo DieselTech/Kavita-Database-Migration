@@ -1,5 +1,17 @@
 # Kavita-Database-Migration
 
+
+## Codex_Migration.py
+
+[Codex](https://github.com/ajslater/codex) to Kavita reading progress migration. 
+
+Usage:
+    python Codex_Migration.py --codex-db /path/to/codex.sqlite --kavita-db /path/to/kavita.db --username "KavitaUsername" --codex-user "CodexUsername"
+
+
+I highly recommend running with `--dry-run` and `--report report.txt` together so you get an idea of what will happen. If you need to map libraries between different mount points, then use `--path-map` (old=new) to get the script to look at different mounts. 
+
+
 ## ComicRack_Migration.py
 
 ComicRack to Kavita Migration Script
@@ -12,15 +24,24 @@ The script matches comics by:
 - Volume number/year
 - Issue/Chapter number
 
+A ComicRack series name is usually ambiguous on its own ("Avengers" has dozens of runs). Candidates are therefore hard-gated on actually containing the issue number, then
+scored on how well the run identity lines up. Ambiguous ties are reported. 
+
+
+
 Usage:
-    python ComicRack_Migration.py --comicrack-xml /path/to/ComicDB.xml --kavita-db /path/to/kavita.db --username "YourKavitaUsername" [options]
+    python ComicRack_Migration.py --comicrack-xml /path/to/ComicDB.xml --kavita-db /path/to/kavita.db --username "KavitaUsername"
 
 
 ## Kavita_Migrate_Progress.py
-Python script to help migrate from an old database to a fresh new database while still bringing over your read progress and users. 
+
+**This is mainly for taking a really old install of Kavita and migrating to a brand new install**
+As with the other 2 scripts, I suggest running with `--dry-run` and `--report report.txt` together. 
+
+It isn't the most straight forward process, but you need to start up a brand new fresh instance and add your libraries and let Kavita scan in the initial ingest.
 
 Usage:
-    python Kavita_Migrate_Progress.py --old-db /path/to/old/kavita.db --new-db /path/to/new/kavita.db [--dry_run]
+    python Kavita_Migrate_Progress.py --old-db /path/to/old/kavita.db --new-db /path/to/new/kavita.db [--dry-run] [--report]
 
 Requirements:
     - Python 3.7+
@@ -45,8 +66,6 @@ This is useful when:
 - Recovering from database corruption
 - Migrating to a new server with different file paths
 
-Before anyone asks, this is not for migrating to or from other applications. It is meant for a Kavita --> Kavita migration. 
-
 There is some steps to make this script work or run properly: 
 
 1. Shut down your old install of Kavita that has all your historical data in it. 
@@ -59,8 +78,8 @@ There is some steps to make this script work or run properly:
 8. Move the new instance database to the local machine where the script resides
 9. Run the script and point it at both files.
 10. Watch as it maps the libraries, then the files, then asks you what users you want to move over.
-11. Once it is completed your new kavita database will have the mapped progress and read events in it.
-12. Take your new database file and put it back in your Kavita instance
+11. Once it is completed your new Kavita database will have the mapped progress and read events in it.
+12. Take your new database file and put it back in your new Kavita instance
 13. Start Kavita. 
 
 Do NOT run this script over the network or SMB share. Both databases must be local files.
